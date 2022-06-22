@@ -1,7 +1,16 @@
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 
-const NewExpense = ({ updateTitle, updateAmount, updateDate }) => {
+const NewExpense = ({ updateTitle, updateAmount, updateDate, addExpense }) => {
+  // Add Expense
+  const saveExpenseData = (newExpenseData) => {
+    const expenseData = {
+      ...newExpenseData,
+      id: Math.random().toString(),
+    };
+    addExpense(expenseData);
+  };
+
   return (
     <div className="new-expense">
       New Expense
@@ -9,6 +18,7 @@ const NewExpense = ({ updateTitle, updateAmount, updateDate }) => {
         updateTitle={updateTitle}
         updateAmount={updateAmount}
         updateDate={updateDate}
+        saveExpenseData={saveExpenseData}
       />
     </div>
   );

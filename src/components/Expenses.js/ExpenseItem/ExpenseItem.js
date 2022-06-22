@@ -1,9 +1,8 @@
-import Button from "../../UI/Button/Button.js";
+import "./ExpenseItem.css";
 import Card from "../../UI/Card/Card.js";
 import ExpenseDate from "../ExpenseDate.js/ExpenseDate.js";
-import "./ExpenseItem.css";
 
-const ExpenseItem = ({ title, amount, date, changeTitle, id }) => {
+const ExpenseItem = ({ title, amount, date }) => {
   return (
     <Card className="expense-item">
       <ExpenseDate date={date} />
@@ -11,7 +10,6 @@ const ExpenseItem = ({ title, amount, date, changeTitle, id }) => {
         <h2> {title} </h2>
         <div className="expense-item__price"> {amount} </div>
       </div>
-      <Button changeTitle={changeTitle} id={id} />
     </Card>
   );
 };
