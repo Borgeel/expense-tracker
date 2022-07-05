@@ -1,5 +1,5 @@
-const Button = ({ changeTitle, id }) => {
-  return <button onClick={() => changeTitle(id)}>Change Title</button>;
+const Button = () => {
+  return <button>Add new expense</button>;
 };
 
 export default Button;
