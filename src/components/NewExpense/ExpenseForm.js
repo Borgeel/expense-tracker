@@ -2,32 +2,35 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = ({ saveExpenseData }) => {
-  const [newExpense, setNewExpense] = useState({
-    title: "",
-    amount: "",
-    date: "",
-  });
+  const [enteredTitle, setEneteredTitle] = useState("");
+  const [enteredAmount, setEneteredAmount] = useState("");
+  const [enteredDate, setEneteredDate] = useState("");
 
-  // Change Handler
-  const changeHandler = (event) => {
-    const { name, value } = event.target;
-    setNewExpense((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
+  // Title Change Handler
+  const titleChangeHandler = (e) => {
+    setEneteredTitle(e.target.value);
+  };
+
+  // Amount Change Handler
+  const amountChangeHandler = (e) => {
+    setEneteredAmount(e.target.value);
+  };
+  // Date Change Handler
+  const dateChangeHandler = (e) => {
+    setEneteredDate(e.target.value);
   };
 
   // Submit Handler
-  const submitHandler = (event) => {
-    event.preventDefault();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    // Create new expense
+    const newExpense = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+    // Save expense data
     saveExpenseData(newExpense);
-    setNewExpense({
-      title: "",
-      amount: "",
-      date: "",
-    });
   };
 
   return (
@@ -37,18 +40,16 @@ const ExpenseForm = ({ saveExpenseData }) => {
           <label>Title</label>
           <input
             type="text"
-            onChange={changeHandler}
-            name="title"
-            value={newExpense.title}
+            onChange={titleChangeHandler}
+            value={enteredTitle}
           />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
           <input
             type="number"
-            onChange={changeHandler}
-            name="amount"
-            value={newExpense.amount}
+            onChange={amountChangeHandler}
+            value={enteredAmount}
             min="0.01"
             step="0.01"
           />
@@ -57,9 +58,8 @@ const ExpenseForm = ({ saveExpenseData }) => {
           <label>Date</label>
           <input
             type="date"
-            onChange={changeHandler}
-            name="date"
-            value={newExpense.date}
+            onChange={dateChangeHandler}
+            value={enteredDate}
             min="2022-01-01"
             max="2024-12-31"
           />

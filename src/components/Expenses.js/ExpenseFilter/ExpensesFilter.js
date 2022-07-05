@@ -13,7 +13,7 @@ const ExpensesFilter = ({ selected, onChangeFilter }) => {
           <option>2024</option>
           <option>2023</option>
           <option>2022</option>
-          <option>2011</option>
+          <option>2021</option>
         </select>
       </div>
     </div>
